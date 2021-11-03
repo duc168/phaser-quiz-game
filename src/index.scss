@@ -1,0 +1,13 @@
+
+@font-face {
+  font-family: CentraNo2;
+  src: url('/fonts/CentraNo2-Medium.ttf');
+}
+body {
+  margin: 0;
+  font-family: CentraNo2, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
