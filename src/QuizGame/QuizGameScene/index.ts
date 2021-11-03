@@ -35,7 +35,7 @@ class QuizGameScene extends Scene {
     }
 
     preload() {
-        this.load.audio(AUDIO.TICK, ['/audio/mixkit-game-ball-tap-2073.wav'])
+        this.load.audio(AUDIO.TICK, [import.meta.env.BASE_URL + 'audio/mixkit-game-ball-tap-2073.wav'])
         this.load.audio(AUDIO.TIMEOUT, ['/audio/mixkit-video-game-treasure-2066.wav'])
     }
 
