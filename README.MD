@@ -4,6 +4,7 @@ Simple Quiz Game
 
 ## Tech
 
+- React
 - Typescript
 - Vite
 - Sass
