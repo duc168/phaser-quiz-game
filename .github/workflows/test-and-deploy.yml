@@ -52,6 +52,8 @@ jobs:
           echo 'Host *' > ssh_config
           echo '    StrictHostKeyChecking no' >> ssh_config
           echo ' ' >> ssh_config
+          ls
+          cat ssh_config
           set -x    
           cp ssh_config dist/
       - name: Upload dist
