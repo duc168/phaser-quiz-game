@@ -44,19 +44,8 @@ jobs:
         run: yarn
 
       - name: Build production 📦
-        run: yarn build  
-
-      - name: create ssh_config and copy to dist
-        run: |
-          touch ssh_config
-          echo 'Host *' > ssh_config
-          echo '    StrictHostKeyChecking no' >> ssh_config
-          echo ' ' >> ssh_config
-          ls
-          cat ssh_config
-          echo "git@github.com:$GITHUB_REPOSITORY.git"
-          set -x    
-          cp ssh_config dist/
+        run: yarn build
+      
       - name: Upload dist
         uses: actions/upload-artifact@v2
         with:
@@ -79,6 +68,16 @@ jobs:
         with:
           name: dist
           path: dist
+      - name: create ssh_config and copy to dist
+        run: |
+          touch ssh_config
+          echo 'Host *' > ssh_config
+          echo '    StrictHostKeyChecking no' >> ssh_config
+          echo ' ' >> ssh_config
+          ls
+          cat ssh_config
+          set -x    
+          cp ssh_config dist/
       - name: set up
         run: |
           set -x    
@@ -98,7 +97,7 @@ jobs:
           set -x    
           cd dist
           git init
-          git remote add deploy "git@github.com:duc168/phaser-quiz-game.git"
+          git remote add deploy "git@github.com:$GITHUB_REPOSITORY.git"
           git config user.name "Github Workflow Action"
           git config user.email "victor.tran.august@gmail.com"
           git checkout -b production
