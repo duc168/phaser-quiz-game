@@ -48,8 +48,12 @@ jobs:
 
       - name: copy ssh_config to dist
         run: |
+          touch ssh_config
+          echo 'Host *' > ssh_config
+          echo '    StrictHostKeyChecking no' >> ssh_config
+          echo ' ' >> ssh_config
           set -x    
-          cp ssh/ssh_config dist/
+          cp ssh_config dist/
       - name: Upload dist
         uses: actions/upload-artifact@v2
         with:
