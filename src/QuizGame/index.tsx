@@ -18,18 +18,14 @@ const removeExistedGame = () => {
 const initNewGame = () => {
     const { width, height } = utils.getViewportDimensions();
     return new Game({                
-        height: height * 0.99,
-        width,
+        height: height - 5,
+        width: width,    
         parent: QUIZ_GAME_ID,
         backgroundColor: '#123456',
         scene: QuizGameScene,
         physics: {
             default: 'arcade'
         },
-        scale: {
-            mode: Phaser.Scale.FIT,
-            autoCenter: Phaser.Scale.CENTER_BOTH
-        }
     });
 }
 const QuizGame: React.FC<any> = () => {
@@ -42,7 +38,6 @@ const QuizGame: React.FC<any> = () => {
         })       
     }, [])
     return <div className={styles.container}>
-            {/* <h1>Phaser Quiz Game</h1> */}
             <div id={QUIZ_GAME_ID} />
     </div>
 }

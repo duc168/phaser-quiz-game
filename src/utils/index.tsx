@@ -133,7 +133,17 @@ const getResponsiveData = () => {
   const { width, height } = getViewportDimensions();
   return getMobileData(width, height);
 }
+
+/**
+ * Create full path for url, prevent error on subfolder hosting
+ * @param input (must not start with /)
+ * @returns 
+ */
+const getFullPath = (input: string) => {
+    return import.meta.env.BASE_URL + input
+}
 export default {
     getViewportDimensions,
-    getResponsiveData
+    getResponsiveData,
+    getFullPath
 }
