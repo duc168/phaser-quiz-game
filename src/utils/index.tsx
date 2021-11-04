@@ -1,3 +1,5 @@
+import config from "../config";
+
 const getViewportDimensions = () => {
     let width = 0;
     let height = 0;
@@ -104,6 +106,21 @@ const getViewportDimensions = () => {
     const START_BUTTON_STYLE: Phaser.Types.GameObjects.Text.TextStyle = {
       fontSize:  WIDTH / 300 + 'rem',
     }
+
+    const NUMERIC_ORDER_POINT = {
+        x: WIDTH - WIDTH / 10,
+        y: 0
+    }
+
+    const NUMERIC_ORDER_STYLE: Phaser.Types.GameObjects.Text.TextStyle = {
+        fontSize:  WIDTH / 500 + 'rem',
+        padding: {
+            x: WIDTH / 64,
+            y:  HEIGHT / 32
+        },
+        fixedWidth: WIDTH / 12,
+        fontFamily: config.DEFAULT_FONT,
+    }
     return {
         QUESTION: {
             STYLE: QUESTION_STYLE,
@@ -125,6 +142,10 @@ const getViewportDimensions = () => {
         START_BUTTON: {
             STYLE: START_BUTTON_STYLE,
             POINT: START_BUTTON_POINT
+        },
+        NUMERIC_ORDER: {
+            STYLE: NUMERIC_ORDER_STYLE,
+            POINT: NUMERIC_ORDER_POINT
         }
     }
 }

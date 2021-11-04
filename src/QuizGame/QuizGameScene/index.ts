@@ -2,6 +2,7 @@ import { Scene } from 'phaser';
 import config from '../../config';
 import utils from '../../utils';
 import ChoicesHandler from './ChoicesHandler';
+import NumericOrderHandler from './NumericOrderHandler';
 import QuestionHandler from './questionHandler';
 import StartButtonHandler from './StartButtonHandler';
 import TimerHandler from './TimerHandler'
@@ -60,12 +61,15 @@ class QuizGameScene extends Scene {
 
     startButton: StartButtonHandler
 
+    numericOrder: NumericOrderHandler
+
     constructor(config: string | Phaser.Types.Scenes.SettingsConfig) {
         super(config)
         this.question = new QuestionHandler(this)
         this.choices = new ChoicesHandler(this)
         this.timer = new TimerHandler(this)
         this.startButton = new StartButtonHandler(this)
+        this.numericOrder = new NumericOrderHandler(this)
     }
 
     preload() {
@@ -91,10 +95,12 @@ class QuizGameScene extends Scene {
             this.addQuiz();
             this.timer.reset();
             this.timer.setInterval(() => {}, () => {
-                this.startButton.showText();
-                this.removeQuiz();
+                // test
+                // this.startButton.showText();
+                // this.removeQuiz();
             })
         });
+        this.numericOrder.init();
     }
 
 }

@@ -68,7 +68,7 @@ export default class TimerHandler {
             if (this.timerValue === 0) {
                 this.audioTimeout?.play();
                 clearInterval(this.timerIntervalId)
-                this.hideText();
+                // this.hideText();
                 onComplete();
             } else {
                 this.audioTick?.play();

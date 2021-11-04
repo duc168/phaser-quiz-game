@@ -2,10 +2,10 @@ import config from "../../config";
 import utils from "../../utils";
 
 export default class StartButtonHandler {
-    SETTING = utils.getResponsiveData()
-    scene: Phaser.Scene    
+    private SETTING = utils.getResponsiveData()
+    private scene: Phaser.Scene    
 
-    text?: Phaser.GameObjects.Text
+    private text?: Phaser.GameObjects.Text
 
     constructor(scene: Phaser.Scene) {
         this.scene = scene
@@ -37,5 +37,9 @@ export default class StartButtonHandler {
         this.text.on('pointerdown', () => {
             onStart();
         });
+
+        // test
+        this.hideText();
+        onStart();
     }
 }

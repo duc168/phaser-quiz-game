@@ -2,14 +2,14 @@ import config from "../../config";
 import utils from "../../utils";
 
 export default class QuestionHandler {
-    SETTING = utils.getResponsiveData()
-    scene: Phaser.Scene
+    private SETTING = utils.getResponsiveData()
+    private scene: Phaser.Scene
 
     constructor(scene: Phaser.Scene) {
         this.scene = scene
     }
 
-    question?: Phaser.GameObjects.Text    
+    private question?: Phaser.GameObjects.Text    
 
     init(question: string) {
         this.question = this.scene.add.text(this.SETTING.QUESTION.POINT.x, this.SETTING.QUESTION.POINT.y, question, {
