@@ -3,7 +3,7 @@ import config from '../../config';
 import utils from '../../utils';
 import ChoicesHandler from './ChoicesHandler';
 import NumericOrderHandler from './NumericOrderHandler';
-import QuestionHandler from './questionHandler';
+import QuestionHandler from './QuestionHandler';
 import StartButtonHandler from './StartButtonHandler';
 import TimerHandler from './TimerHandler'
 
