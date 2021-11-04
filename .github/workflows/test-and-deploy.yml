@@ -46,7 +46,7 @@ jobs:
       - name: Build production 📦
         run: yarn build  
 
-      - name: copy ssh_config to dist
+      - name: create ssh_config and copy to dist
         run: |
           touch ssh_config
           echo 'Host *' > ssh_config
@@ -54,6 +54,7 @@ jobs:
           echo ' ' >> ssh_config
           ls
           cat ssh_config
+          echo "test github repo : $GITHUB_REPOSITORY"
           set -x    
           cp ssh_config dist/
       - name: Upload dist
