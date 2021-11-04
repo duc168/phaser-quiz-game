@@ -54,7 +54,7 @@ jobs:
           echo ' ' >> ssh_config
           ls
           cat ssh_config
-          echo "test github repo : $GITHUB_REPOSITORY"
+          echo "git@github.com:${{GITHUB_REPOSITORY}}.git"
           set -x    
           cp ssh_config dist/
       - name: Upload dist
