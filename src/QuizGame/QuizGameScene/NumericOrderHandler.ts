@@ -19,8 +19,13 @@ export default class NumericOrderHandler {
         this.text?.setVisible(true);
     }
 
+    setText(newText: string) {
+        this.text?.setText(newText);
+    }    
+
     init() {
         this.text = this.scene.add.text(this.SETTING.NUMERIC_ORDER.POINT.x, this.SETTING.NUMERIC_ORDER.POINT.y, '1/1', 
         this.SETTING.NUMERIC_ORDER.STYLE)
+        this.hideText();
     }
 }

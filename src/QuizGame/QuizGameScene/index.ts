@@ -1,54 +1,13 @@
 import { Scene } from 'phaser';
 import config from '../../config';
+import quizGameEvents from '../../quizGameEvents';
 import utils from '../../utils';
+import AnswerHandler from './AnswerHandler';
 import ChoicesHandler from './ChoicesHandler';
 import NumericOrderHandler from './NumericOrderHandler';
 import QuestionHandler from './QuestionHandler';
 import StartButtonHandler from './StartButtonHandler';
 import TimerHandler from './TimerHandler'
-
-function* questionGenerator() {
-    const list = [
-        {
-            question: 'How old are you?',
-            choices: ['100', '20', '30', 'Idk'],
-            answers: 3,
-        },
-        {
-            question: 'How old is earth?',
-            choices: ['111', '6969', '57575', 'Idk'],
-            answers: 3,
-        },
-        {
-            question: 'How old is your father?',
-            choices: ['10', '20', '30', 'Idk'],
-            answers: 3,
-        },
-        {
-            question: 'How old is your brother?',
-            choices: ['3', '4', '5', 'Idk'],
-            answers: 3,
-        },
-        {
-            question: 'How old is your mother?',
-            choices: ['10', '20', '33', 'Idk'],
-            answers: 3,
-        },
-        {
-            question: 'How old is your sister?',
-            choices: ['15', '25', '35', 'Idk'],
-            answers: 3,
-        },
-        {
-            question: 'How old is your best friend?',
-            choices: ['20', '100', '31', 'Idk'],
-            answers: 3,
-        },
-    ]
-    for (let i = 0; i < list.length; i++) {
-        yield list[i]
-    }
-}
 
 class QuizGameScene extends Scene {
     SETTING = utils.getResponsiveData()
@@ -57,19 +16,24 @@ class QuizGameScene extends Scene {
 
     choices: ChoicesHandler
 
+    answer: AnswerHandler
+
     timer: TimerHandler
 
     startButton: StartButtonHandler
 
     numericOrder: NumericOrderHandler
 
-    constructor(config: string | Phaser.Types.Scenes.SettingsConfig) {
+    currentQuiz?: IQuiz
+
+    constructor(config: string | Phaser.Types.Scenes.SettingsConfig, shouldBeReduxStoreHere: any) {
         super(config)
         this.question = new QuestionHandler(this)
         this.choices = new ChoicesHandler(this)
         this.timer = new TimerHandler(this)
         this.startButton = new StartButtonHandler(this)
         this.numericOrder = new NumericOrderHandler(this)
+        this.answer = new AnswerHandler(this)        
     }
 
     preload() {
@@ -77,30 +41,55 @@ class QuizGameScene extends Scene {
         this.load.audio(config.AUDIO.TIMEOUT, [utils.getFullPath('audio/mixkit-video-game-treasure-2066.wav')])
     }
 
+    private addNewQuiz(newQuiz: IQuiz) {
+        this.currentQuiz = newQuiz        
+    }
+
     addQuiz() {
-        this.question.init('Where does water come from?');
-        this.choices.init(['Sea', 'Sky', 'Human', 'God']);
+        if (!this.currentQuiz) {
+            return
+        }
+        const { question, choices, order, total } = this.currentQuiz
+        this.question.init(question);
+        this.choices.init(choices);
+        this.numericOrder.setText(`${order}/${total}`)
+
+        this.timer.reset();
+        this.startButton.hideText();
+        this.numericOrder.showText();
+        this.timer.showText();
+        this.timer.setInterval(() => {}, () => {
+            this.game.events.emit(quizGameEvents.NEXT_QUESTION_EVENT)
+        });
     }
 
     removeQuiz() {        
         this.question.remove();
         this.choices.remove();
+        this.timer.hideText();
+        this.numericOrder.hideText();
     }    
 
     create() {
-        this.timer.init(10);        
-        this.startButton.init(() => {
-            this.timer.showText();
-            this.startButton.hideText();
-            this.addQuiz();
-            this.timer.reset();
-            this.timer.setInterval(() => {}, () => {
-                // test
-                // this.startButton.showText();
-                // this.removeQuiz();
-            })
+        this.timer.init(5);        
+        this.startButton.init(() => {    
+            this.game.events.emit(quizGameEvents.NEXT_QUESTION_EVENT);
         });
         this.numericOrder.init();
+        this.game.events.on(quizGameEvents.ADD_NEW_QUESTION_EVENT, (newQuestion: IQuiz) => {
+            this.addNewQuiz(newQuestion)
+            this.addQuiz();
+        })
+        this.game.events.on(quizGameEvents.END_ALL_QUESTIONS_EVENT, () => {
+            this.startButton.showText();
+            this.removeQuiz();
+        });
+    }
+
+    init(test: any) {
+        // this.game.events.on('test', (e: any) => {
+        //     console.log('test event', e);
+        // })
     }
 
 }

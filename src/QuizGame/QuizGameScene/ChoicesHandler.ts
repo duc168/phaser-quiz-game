@@ -41,6 +41,9 @@ class ChoicesHandler {
     }
 
     init(choices: string[]) {
+        if (this.choices.length === 4) {
+            this.remove();
+        }
         if (choices.length === 4) {
             this.choices.push(this.scene.add.text(this.SETTING.CHOICE.POINTS.A.x, this.SETTING.CHOICE.POINTS.A.y, choices[0], this.getRectangleStyle()));
             this.choices.push(this.scene.add.text(this.SETTING.CHOICE.POINTS.B.x, this.SETTING.CHOICE.POINTS.B.y, choices[1], this.getRectangleStyle()));

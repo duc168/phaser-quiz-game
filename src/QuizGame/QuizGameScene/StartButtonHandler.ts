@@ -39,7 +39,7 @@ export default class StartButtonHandler {
         });
 
         // test
-        this.hideText();
-        onStart();
+        // this.hideText();
+        // onStart();
     }
 }

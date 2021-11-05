@@ -163,8 +163,37 @@ const getResponsiveData = () => {
 const getFullPath = (input: string) => {
     return import.meta.env.BASE_URL + input
 }
+
+class CustomEventEmitter {
+    private events: Record<string, Function>
+    constructor() {
+        this.events = {}
+    }
+
+    addEvent(eventName: string, callback: Function) {
+        this.events[eventName] = callback
+    }
+
+    removeEvent(eventName: string) {
+        delete this.events[eventName]
+    }
+
+    emit(eventName: string, data: any) {
+        if (!this.events[eventName]) {
+            return
+        }
+        this.events[eventName](data)
+    }
+}
+
+const myCustomEventEmitter = new CustomEventEmitter();
+
+const getCustomEventEmitter = () => {
+    return myCustomEventEmitter
+}
 export default {
     getViewportDimensions,
     getResponsiveData,
-    getFullPath
+    getFullPath,
+    getCustomEventEmitter
 }
