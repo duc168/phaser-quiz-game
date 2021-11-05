@@ -63,6 +63,7 @@ class ChoicesHandler {
             choice.removeAllListeners();
             choice.removeInteractive();
         });
+        this.choices = []
     }
 }
 
