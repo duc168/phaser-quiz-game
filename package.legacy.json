@@ -1,15 +1,6 @@
 {
   "name": "phaser3-quiz-game",
   "version": "0.0.0",
-  "files": ["lib"],
-  "main": "./lib/quiz-game-lib.umd.js",
-  "module": "./lib/quiz-game-lib.es.js",
-  "exports": {
-    ".": {
-      "import": "./lib/quiz-game-lib.es.js",
-      "require": "./lib/quiz-game-lib.umd.js"
-    }
-  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
