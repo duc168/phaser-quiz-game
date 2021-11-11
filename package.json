@@ -1,7 +1,10 @@
 {
   "name": "autonomous-quiz-game",
   "version": "0.0.1",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
+  "types": "./lib/src/index.d.ts",
   "main": "./lib/quiz-game-lib.umd.js",
   "module": "./lib/quiz-game-lib.es.js",
   "exports": {
@@ -20,7 +23,8 @@
     "phaser": "3.55.2",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "sass": "^1.43.4"
+    "sass": "^1.43.4",
+    "vite-plugin-dts": "^0.9.4"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",
