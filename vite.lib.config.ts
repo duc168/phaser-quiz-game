@@ -15,7 +15,7 @@ export default defineConfig({
       fileName: (format) => `quiz-game-lib.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'phaser'],
+      // external: ['react', 'phaser'],
       output: {
         // Provide global variables to use in the UMD build
         // Add external deps here
