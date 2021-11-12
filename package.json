@@ -34,5 +34,9 @@
     "react-dom": "17.0.0",
     "@types/react": "17.0.33",
     "@types/react-dom": "17.0.10"
-  } 
+  },
+  "publishConfig":{
+    "autonomous-games:registry": "https://gitlab.com/api/v4/projects/31232442/packages/npm/",
+    "registry": "https://gitlab.com/api/v4/projects/31232442/packages/npm/"
+  }
 }
