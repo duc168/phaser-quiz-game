@@ -1,6 +1,6 @@
 {
-  "name": "autonomous-quiz-game",
-  "version": "0.0.5",
+  "name": "@autonomous-games/quiz-game",
+  "version": "0.0.1",
   "files": [
     "lib"
   ],
