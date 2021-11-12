@@ -1,6 +1,6 @@
 import { Scene } from 'phaser';
 import config from '../../config';
-import quizGameEvents from '../../quizGameEvents';
+import quizGameEvents from '../../events';
 import utils from '../../utils';
 import AnswerHandler from './AnswerHandler';
 import ChoicesHandler from './ChoicesHandler';
@@ -9,7 +9,7 @@ import QuestionHandler from './QuestionHandler';
 import StartButtonHandler from './StartButtonHandler';
 import TimerHandler from './TimerHandler'
 
-class QuizGameScene extends Scene {
+class GameScene extends Scene {
     SETTING = utils.getResponsiveData()
 
     question: QuestionHandler
@@ -37,8 +37,8 @@ class QuizGameScene extends Scene {
     }
 
     preload() {
-        this.load.audio(config.AUDIO.TICK, [utils.getFullPath('audio/mixkit-game-ball-tap-2073.wav')])
-        this.load.audio(config.AUDIO.TIMEOUT, [utils.getFullPath('audio/mixkit-video-game-treasure-2066.wav')])
+        this.load.audio(config.AUDIO.TICK, [`https://firebasestorage.googleapis.com/v0/b/avid-circle-284205.appspot.com/o/autonomous-games%2Fquiz-game%2Fmixkit-game-ball-tap-2073.wav?alt=media&token=2c847ba6-42d0-438e-a67b-50a380f5c468`])
+        this.load.audio(config.AUDIO.TIMEOUT, [`https://firebasestorage.googleapis.com/v0/b/avid-circle-284205.appspot.com/o/autonomous-games%2Fquiz-game%2Fmixkit-video-game-treasure-2066.wav?alt=media&token=51f1fe0a-5c8e-48ef-80ea-3abba1440f7e`])
     }
 
     private addNewQuiz(newQuiz: IQuiz) {
@@ -94,4 +94,4 @@ class QuizGameScene extends Scene {
 
 }
 
-export default QuizGameScene
+export default GameScene

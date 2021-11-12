@@ -1,5 +1,5 @@
 import config from "../../config";
-import quizGameEvents from "../../quizGameEvents";
+import quizGameEvents from "../../events";
 import utils from "../../utils";
 
 class ChoicesHandler {

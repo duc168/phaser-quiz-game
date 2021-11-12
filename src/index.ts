@@ -1,6 +1,6 @@
 
-import QuizGame from './QuizGame'
+import Game from './Game';
 
-export default {
-    QuizGame
-}
+export const QuizGame = Game
+
+export default Game

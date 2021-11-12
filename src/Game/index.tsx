@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { Game } from 'phaser';
-import QuizGameScene from './QuizGameScene'
+import Scene from './Scene'
 import styles from './styles.module.scss'
 import utils from '../utils';
-import quizGameEvents from '../quizGameEvents';
+import quizGameEvents from '../events';
 const QUIZ_GAME_ID = 'quiz-game';
 const removeExistedGame = () => {
     const quizGameElement = document.getElementById(QUIZ_GAME_ID)
@@ -17,7 +17,7 @@ const removeExistedGame = () => {
 }
 const initNewGame = (db: IQuiz[]) => {
     const { width, height } = utils.getViewportDimensions();
-    const scene = new QuizGameScene("quiz-game", db)
+    const scene = new Scene("quiz-game", db)
     return new Game({
         height: height - 5,
         width: width,    
@@ -107,7 +107,7 @@ const getNewQuiz = (game: Phaser.Game,isDoneCallback: () => void) => {
         quizGenerator = quizGenerate()
     }
 }
-const QuizGame: React.FC<any> = () => {
+const ThisGame: React.FC<any> = () => {
     
     useEffect(() => {
         removeExistedGame();       
@@ -126,4 +126,4 @@ const QuizGame: React.FC<any> = () => {
     </div>
 }
 
-export default QuizGame
+export default ThisGame

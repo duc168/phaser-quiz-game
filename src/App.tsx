@@ -1,10 +1,10 @@
 import './App.scss'
-import QuizGame from './QuizGame'
+import Game from './Game'
 
 function App() {
   return (
     <div id="app">
-      <QuizGame />
+      <Game />
     </div>
   )
 }
