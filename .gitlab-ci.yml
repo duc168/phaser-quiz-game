@@ -1,0 +1,4 @@
+include:
+  - project: 'autonomous-games/devops'
+    ref: master
+    file: 'publish-lib.gitlab-ci.yml'
