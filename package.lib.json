@@ -1,0 +1,25 @@
+{
+  "name": "@games/quiz-game",
+  "version": "0.0.1",
+  "files": [
+    "*"
+  ],
+  "types": "./src/index.d.ts",
+  "main": "./quiz-game-lib.umd.js",
+  "module": "./quiz-game-lib.es.js",
+  "exports": {
+    ".": {
+      "import": "./quiz-game-lib.es.js",
+      "require": "./quiz-game-lib.umd.js"
+    }
+  },
+  "dependencies": {
+    "phaser": "3.55.2"
+  }, 
+  "peerDependencies": {
+    "react": "17.0.0",
+    "react-dom": "17.0.0",
+    "@types/react": "17.0.33",
+    "@types/react-dom": "17.0.10"
+  } 
+}
